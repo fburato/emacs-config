@@ -29,12 +29,6 @@
 (set-frame-font "Source Code Pro for Powerline 14" nil t)
 
 
-;; set up ido mode
-(require 'ido)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-
 ;; setup archives for packages
 (require 'package)
 (add-to-list 'package-archives
@@ -44,7 +38,12 @@
 
 ;; install all missing packages
 (setq package-list
-      '(s markdown-mode))
+      '(s
+        markdown-mode
+        helm
+        projectile
+        helm-projectile
+        ))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -60,14 +59,34 @@
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
-;; Added by package
+;; set up helm config
+;; guid https://github.com/emacs-helm/helm
+(require 'helm-config)
+
+(helm-mode 1)
+(define-key global-map [remap find-file] 'helm-find-files)
+(define-key global-map [remap occur] 'helm-occur)
+(define-key global-map [remap list-buffers] 'helm-buffers-list)
+(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
+(define-key global-map [remap execute-extended-command] 'helm-M-x)
+(unless (boundp 'completion-in-region-function)
+  (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
+  (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
+
+
+;; set up projectile
+;; guide in https://projectile.readthedocs.io/en/latest/usage/
+(projectile-global-mode 1)
+;; Addede by package
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (markdown-mode+ markdown-mode haskell-mode))))
+ '(package-selected-packages
+   (quote
+    (helm-projectile projectile helm markdown-mode+ markdown-mode haskell-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
