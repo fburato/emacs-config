@@ -28,6 +28,20 @@
 ;; set default font
 (set-frame-font "Source Code Pro for Powerline 14" nil t)
 
+;; M-up M-dow to move lines up and down
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
+(global-set-key (kbd "M-<up>") 'move-line-up)
+(global-set-key (kbd "M-<down>") 'move-line-down)
 
 ;; setup archives for packages
 (require 'package)
@@ -45,6 +59,7 @@
         helm-projectile
         scala-mode
         gradle-mode
+        groovy-mode
         ))
 
 (unless package-archive-contents
@@ -88,7 +103,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (gradle-mode scala-mode helm-projectile projectile helm markdown-mode+ markdown-mode haskell-mode))))
+    (groovy-mode gradle-mode scala-mode helm-projectile projectile helm markdown-mode+ markdown-mode haskell-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
