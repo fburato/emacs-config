@@ -61,7 +61,8 @@
         gradle-mode
         groovy-mode
         rust-mode
-))
+        yaml-mode
+        ))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -104,7 +105,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (groovy-mode gradle-mode scala-mode helm-projectile projectile helm markdown-mode+ markdown-mode haskell-mode))))
+    (yaml-mode groovy-mode gradle-mode scala-mode helm-projectile projectile helm markdown-mode+ markdown-mode haskell-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
