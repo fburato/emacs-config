@@ -60,7 +60,8 @@
         scala-mode
         gradle-mode
         groovy-mode
-        ))
+        rust-mode
+))
 
 (unless package-archive-contents
   (package-refresh-contents))
