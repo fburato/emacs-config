@@ -22,8 +22,15 @@
 
 (global-auto-revert-mode t)
 
+;; verify if configDirectory is defined
+;; if not set it to cwd
+
+(if (boundp 'configDirectory)
+    t (setq configDirectory "~")
+    )
+
 (setq ring-bell-function 'ignore) ; Disable bell on esc
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path (concat configDirectory "/lisp/"))
 
 ;; set default font
 (set-frame-font "Source Code Pro for Powerline 14" nil t)
