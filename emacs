@@ -52,8 +52,10 @@
 
 ;; setup archives for packages
 (require 'package)
+(defvar melpaUrl (concat (if (string-equal system-type "windows-nt") "http" "https") "://stable.melpa.org/packages/"))
+
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+               (cons "melpa-stable" melpaUrl) t)
 
 (package-initialize)
 
