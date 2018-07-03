@@ -71,7 +71,8 @@
         groovy-mode
         rust-mode
         yaml-mode
-        ))
+        neotree
+))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -105,3 +106,7 @@
 ;; set up projectile
 ;; guide in https://projectile.readthedocs.io/en/latest/usage/
 (projectile-global-mode 1)
+
+
+;; set up neotree
+(setq neo-autorefresh nil)
