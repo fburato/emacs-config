@@ -23,6 +23,14 @@
 (setq x-select-enable-clipboard t)
 (setq default-buffer-file-coding-system 'utf-8-unix)
 (global-linum-mode t)
+(add-hook 'term-mode-hook 'my-inhibit-global-linum-mode)
+(defun my-inhibit-global-linum-mode ()
+  "Counter-act `global-linum-mode`."
+  (add-hook 'after-change-major-mode-hook
+            (lambda () (linum-mode 0))
+            :append :local
+   )
+)
 
 (setq-default indent-tabs-mode nil) ; always replace tabs with spaces
 (setq-default tab-width 2) ; set tab width to 4 for all buffers
@@ -73,13 +81,15 @@
         helm
         projectile
         helm-projectile
-        scala-mode
         gradle-mode
         groovy-mode
         rust-mode
         yaml-mode
         neotree
-))
+        scala-mode
+        ensime
+        sbt-mode
+        ))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -117,3 +127,4 @@
 
 ;; set up neotree
 (setq neo-autorefresh nil)
+(setq projectile-switch-project-action 'neotree-projectile-action)
