@@ -89,6 +89,7 @@
         scala-mode
         ensime
         sbt-mode
+        web-mode
         ))
 
 (unless package-archive-contents
