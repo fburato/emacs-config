@@ -90,6 +90,8 @@
         ensime
         sbt-mode
         web-mode
+        cmake-mode
+        ssh
         ))
 
 (unless package-archive-contents
