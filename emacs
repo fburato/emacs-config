@@ -91,7 +91,6 @@
         sbt-mode
         web-mode
         cmake-mode
-        ssh
         ))
 
 (unless package-archive-contents
@@ -131,3 +130,7 @@
 ;; set up neotree
 (setq neo-autorefresh nil)
 (setq projectile-switch-project-action 'neotree-projectile-action)
+
+;; remove error message on tramp ssh session on ls dired
+(when (string= system-type "darwin")       
+  (setq dired-use-ls-dired nil))
