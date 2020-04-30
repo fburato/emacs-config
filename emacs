@@ -91,6 +91,8 @@
         sbt-mode
         web-mode
         cmake-mode
+        terraform-mode
+        json-mode
         ))
 
 (unless package-archive-contents
