@@ -87,7 +87,6 @@
         yaml-mode
         neotree
         scala-mode
-        ensime
         sbt-mode
         web-mode
         cmake-mode
@@ -102,12 +101,6 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-
-
-
-;; set up dockerfile-mode
-(require 'dockerfile-mode)
-(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 ;; set up helm config
 ;; guid https://github.com/emacs-helm/helm
